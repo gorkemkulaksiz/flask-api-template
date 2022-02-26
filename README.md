@@ -19,9 +19,9 @@ Libraries:
 
 ## Usage
 
-### config.py
+### .env File
 
-Be sure to fill out the `config.py` file before attempting to run the application server.
+It's nicer to have a dotenv file instead of hard-coding configuration variables. Use the default `.env.example` file to create your own `.env` file before attempting to run the application server.
 
 ### Getting Started
 

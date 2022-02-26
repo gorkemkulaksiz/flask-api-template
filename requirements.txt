@@ -21,3 +21,6 @@ PyJWT
 # Tests
 pytest~=7.0.1
 coverage~=6.3.2
+
+# dotenv files
+python-dotenv

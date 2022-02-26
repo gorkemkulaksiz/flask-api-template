@@ -1,3 +1,11 @@
+import os
+from os.path import join, dirname
+
+from dotenv import load_dotenv
+
+_dotenv_path = join(dirname(__file__), '.env')
+load_dotenv(_dotenv_path)
+
 def _sqlalchemy_conn_string(username, password, host, db):
     return f"mysql+pymysql://{username}:{password}@{host}/{db}"
 
@@ -18,20 +26,20 @@ class _Config(object):
     TESTING = False
 
     # flask-smorest
-    API_TITLE = ""
-    API_VERSION = "v1"
-    OPENAPI_VERSION = "3.0.2"
+    API_TITLE = os.environ.get("API_TITLE")
+    API_VERSION = os.environ.get("API_VERSION")
+    OPENAPI_VERSION = os.environ.get("OPENAPI_VERSION")
 
     # JWT
-    SECRET_KEY = ""
-
-    DB_NAME = ""
-    DB_USERNAME = ""
-    DB_PASSWORD = ""
-    DB_HOST = ""
+    SECRET_KEY = os.environ.get("SECRET_KEY")
 
     SQLALCHEMY_DATABASE_URI = _sqlalchemy_conn_string(
-        DB_USERNAME, DB_PASSWORD, DB_HOST, DB_NAME)
+        os.environ.get("DB_USERNAME"),
+        os.environ.get("DB_PASSWORD"),
+        os.environ.get("DB_HOST"),
+        os.environ.get("DB_NAME")
+    )
+
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 
